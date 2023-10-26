@@ -1,0 +1,28 @@
+POST http://localhost:5002/register
+Content-Type: application/json
+
+{
+    "first_name": "Bard",
+    "last_name": "Peterson",
+    "email": "bard.email.com",
+    "contact_no": "9392874563",
+    "password": "bard@123"
+}
+
+###
+POST http://localhost:5002/auth/login
+Content-Type: application/json
+
+{
+    "email": "alvin@email.com",
+    "password": "Alvin@123"
+}
+
+###
+GET http://localhost:5002/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYTNhYWZmZTEtOWE2Zi00NTBjLTlkODYtMmUwZTBkNDc2OTdjIiwiZmlyc3RfbmFtZSI6IkFsdmluIiwibGFzdF9uYW1lIjoiV2F0c29uIiwiZW1haWwiOiJhbHZpbkBlbWFpbC5jb20iLCJjb250YWN0X25vIjoiOTg0ODcyNzczMSIsImlhdCI6MTY5NzQ4MTgxOSwiZXhwIjoxNjk3NDgxODM5fQ.sC5XvyK_nHPxcelPT7o3BvCN91-i8o0mMfyc7PwytQc
+###
+GET http://localhost:5002/auth/refresh_token
+
+###
+DELETE http://localhost:5002/auth/refresh_token

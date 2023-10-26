@@ -1,10 +1,21 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE DATABASE newsPlatform;
 
 CREATE TABLE users(
-    user_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(25),
-    last_name VARCHAR(25),
-    email VARCHAR(50),
-    contact_no VARCHAR(15),
-    password VARCHAR(50)
+    user_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    first_name TEXT NOT NULL,
+    last_name TEXT,
+    email TEXT NOT NULL UNIQUE,
+    contact_no TEXT UNIQUE,
+    password TEXT NOT NULL
 );
+
+SELECT * FROM users;
+
+INSERT INTO users (first_name, email, password) VALUES ('Alvin', 'alvin@mail.com', '12345');
+
+--psql -U postgres
+--\c newsplatform
+--\dt
+--heroku pg:psql
