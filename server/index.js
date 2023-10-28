@@ -105,6 +105,17 @@ app.get("/all-users", async (req, res) => {
     }
 })
 
+// for saving user feedback
+app.post("/feedback", authenticateToken, async (req, res) => {
+  try {
+    const {user_id} = req.user;
+    const {feedback_desc} = req.body;
+    const feedbackData = await pool.query("INSERT INTO feedback (user_id, feedback_desc) VALUES ($1, $2) RETURNING *", [user_id, feedback_desc]);
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
 app.listen(5002, () => {
   console.log("server has started on port 5002");
 });
